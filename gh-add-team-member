@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+echo $GH_ORG
+echo $GH_TEAM
+
+for N in "${@}" ;
+do
+  echo ${N}
+  gh api -X PUT /orgs/$GH_ORG/teams/$GH_TEAM/memberships/${N} -F role='member'
+done
